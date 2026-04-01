@@ -27,11 +27,9 @@ env/
 # Large model and result files
 *.zip
 models/
-results/
 plots/
 
 # Experiment outputs
-*.csv
 results_log.md
 
 # OS files

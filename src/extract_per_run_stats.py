@@ -47,7 +47,7 @@ for config in CONFIGS:
     Wrapper   = config["wrapper"]
 
     for run in range(1, N_RUNS + 1):
-        model_path = f"models/seeds30/{name}_run{run}"
+        model_path = f"../models/seeds30/{name}_run{run}"
         print(f"  Evaluating {name} run {run}...")
         model = PPO.load(model_path, device='cpu')
 
@@ -73,6 +73,6 @@ for config in CONFIGS:
         print(f"    run {run} sat_rate: {sat_rate:.3f}")
 
 df = pd.DataFrame(rows)
-df.to_csv("results/per_run_sat_rates.csv", index=False)
-print("\nSaved results/per_run_sat_rates.csv")
+df.to_csv("../results/per_run_sat_rates.csv", index=False)
+print("\nSaved ../results/per_run_sat_rates.csv")
 print(df.to_string(index=False))

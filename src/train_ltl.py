@@ -64,9 +64,9 @@ for env_id, WrapperClass, name in ENVS:
         device='cpu',
     )
 
-    callback = MetricsCallback(f"results/{name}_ltl.csv")
+    callback = MetricsCallback(f"../results/{name}_ltl.csv")
     model.learn(total_timesteps=100_000, callback=callback)
-    model.save(f"ppo_{name}_ltl")
+    model.save(f"../ppo_{name}_ltl")
     print(f"Done! Saved ppo_{name}_ltl")
 
 print("\nAll LTL environments complete!")

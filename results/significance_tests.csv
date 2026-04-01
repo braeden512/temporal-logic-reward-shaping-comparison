@@ -1,0 +1,10 @@
+env,comparison,t_stat,p_value,significance
+Empty-8x8,Baseline vs LTL,-1.482,0.1491,p=0.149 ns
+Empty-8x8,Baseline vs TLTL,-0.757,0.4525,p=0.453 ns
+Empty-8x8,LTL vs TLTL,0.952,0.3491,p=0.349 ns
+LavaGap-S5,Baseline vs LTL,0.276,0.7834,p=0.783 ns
+LavaGap-S5,Baseline vs TLTL,-0.678,0.5011,p=0.501 ns
+LavaGap-S5,LTL vs TLTL,-1.093,0.2793,p=0.279 ns
+DoorKey-8x8,Baseline vs LTL,-4.286,0.0001,p<0.0001 ***
+DoorKey-8x8,Baseline vs TLTL,-51.281,0.0,p<0.0001 ***
+DoorKey-8x8,LTL vs TLTL,-43.802,0.0,p<0.0001 ***

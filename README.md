@@ -12,29 +12,13 @@ This project evaluates three reinforcement learning training methods on complex 
 
 The key finding: **TLTL dramatically outperforms both baseline and LTL** on complex ordered-subtask problems (e.g., DoorKey: 94.8% vs 0.6% success rate).
 
-## Project Structure
-
-```
-├── ltl_wrappers.py           # LTL wrapper implementations (infinite-horizon)
-├── tltl_wrappers.py          # TLTL wrapper implementations (finite-horizon)
-├── train_baseline.py         # Single-run baseline training
-├── train_ltl.py              # Single-run LTL training
-├── train_tltl.py             # Single-run TLTL training
-├── train_all_seeds.py        # Main training script (30 seeds × 9 configurations)
-├── evaluate.py               # Multi-seed evaluation and metrics
-├── analyze_seeds.py          # Statistical analysis and visualization
-├── extract_per_run_stats.py  # Extract statistics from results
-├── plot_results.py           # Training metrics plotting utilities
-└── results_log.md            # Experimental results documentation
-```
+All scripts are located in the `src/` directory.
 
 ## Supported Environments
 
 - **Empty**: Navigate to goal position
-- **LavaGaps**: Reach goal while avoiding lava
+- **LavaGap**: Reach goal while avoiding lava
 - **DoorKey**: Collect key, open door, reach goal (ordered subtasks)
-
-All tasks use the MiniGrid 8x8 environment variant.
 
 ## Installation
 
@@ -54,8 +38,10 @@ All tasks use the MiniGrid 8x8 environment variant.
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-# Install dependencies
+# Install dependencies (from src directory)
+cd src
 pip install -r requirements.txt
+cd ..
 ```
 
 ## Usage
@@ -65,17 +51,21 @@ pip install -r requirements.txt
 Train 30 seeds across all 9 configurations (270 models total):
 
 ```bash
+cd src
 python train_all_seeds.py
+cd ..
 ```
 
-Models are saved to `models/seeds30/` and training logs to `results/seeds30/`.
+Models are saved to `models/seeds30/` and training logs to `results/seeds30/` in the project root.
 
 ### Analysis
 
 Analyze multi-seed results with learning curves and evaluation metrics:
 
 ```bash
+cd src
 python analyze_seeds.py
+cd ..
 ```
 
 Generates plots in `plots/` and comprehensive metrics in `results/seed_evaluation_metrics.csv`.
@@ -85,11 +75,17 @@ Generates plots in `plots/` and comprehensive metrics in `results/seed_evaluatio
 Individual training scripts for each method are also available:
 
 ```bash
+cd src
 python train_baseline.py   # Baseline PPO without wrappers
 python train_ltl.py        # LTL wrapper training
 python train_tltl.py       # TLTL wrapper training
 python evaluate.py         # Evaluate baseline/LTL/TLTL models
+python plot_results.py     # Generate training curve plots
+python extract_per_run_stats.py  # Extract per-run statistics
+cd ..
 ```
+
+**Important**: All scripts must be run from the `src/` directory. Results are saved to the project root directories (`results/`, `models/`, `plots/`).
 
 ## Key Results
 

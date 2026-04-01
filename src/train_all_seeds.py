@@ -86,9 +86,9 @@ for run in range(1, N_RUNS + 1):
             device='cpu',
         )
 
-        csv_path   = f"results/seeds30/{name}_run{run}.csv"
-        model_path = f"models/seeds30/{name}_run{run}"
-        os.makedirs("models/seeds30", exist_ok=True)
+        csv_path   = f"../results/seeds30/{name}_run{run}.csv"
+        model_path = f"../models/seeds30/{name}_run{run}"
+        os.makedirs("../models/seeds30", exist_ok=True)
 
         callback = MetricsCallback(csv_path)
         model.learn(total_timesteps=TIMESTEPS, callback=callback)

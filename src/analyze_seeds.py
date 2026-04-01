@@ -14,8 +14,8 @@ TIMESTEPS = 100_000
 SMOOTH = 15
 SAMPLE_EFF_THRESHOLD = 0.8
 
-os.makedirs("plots", exist_ok=True)
-os.makedirs("results", exist_ok=True)
+os.makedirs("../plots", exist_ok=True)
+os.makedirs("../results", exist_ok=True)
 
 CONFIGS = [
     {"name": "empty_baseline",   "env_id": "MiniGrid-Empty-8x8-v0",   "env_label": "Empty-8x8",   "method": "Baseline", "wrapper": None},
@@ -85,7 +85,7 @@ for ax, env_label in zip(axes, ENVS):
                       if c["env_label"] == env_label and c["method"] == method)
         curves = []
         for run in range(1, N_RUNS + 1):
-            path = f"results/seeds30/{config['name']}_run{run}.csv"
+            path = f"../results/seeds30/{config['name']}_run{run}.csv"
             curves.append(load_and_interpolate(path, "ep_len_mean", grid))
 
         curves  = np.array(curves)
@@ -110,9 +110,9 @@ for ax, env_label in zip(axes, ENVS):
     ax.grid(alpha=0.3)
 
 plt.tight_layout()
-plt.savefig("plots/seeds_length_curves.png", dpi=150)
+plt.savefig("../plots/seeds_length_curves.png", dpi=150)
 plt.close()
-print("  Saved plots/seeds_length_curves.png")
+print("  Saved ../plots/seeds_length_curves.png")
 
 # ══════════════════════════════════════════════════════════════════════════════
 # PART 2: Evaluate all 45 models
@@ -135,8 +135,8 @@ for config in CONFIGS:
     sample_effs  = []
 
     for run in range(1, N_RUNS + 1):
-        model_path = f"models/seeds30/{name}_run{run}"
-        csv_path   = f"results/seeds30/{name}_run{run}.csv"
+        model_path = f"../models/seeds30/{name}_run{run}"
+        csv_path   = f"../results/seeds30/{name}_run{run}.csv"
         print(f"  Evaluating {name} run {run}...")
         model = PPO.load(model_path, device='cpu')
 
@@ -181,8 +181,8 @@ for config in CONFIGS:
           if not np.isnan(np.nanmean(sample_effs_clean)) else "    seff: N/A")
 
 df_eval = pd.DataFrame(eval_rows)
-df_eval.to_csv("results/seed_evaluation_metrics.csv", index=False)
-print("\nSaved results/seed_evaluation_metrics.csv")
+df_eval.to_csv("../results/seed_evaluation_metrics.csv", index=False)
+print("\nSaved ../results/seed_evaluation_metrics.csv")
 print(df_eval.to_string(index=False))
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -244,11 +244,11 @@ for ax in axes:
     ax.grid(axis="y", alpha=0.3)
 
 plt.tight_layout()
-plt.savefig("plots/seed_evaluation_metrics.png", dpi=150)
+plt.savefig("../plots/seed_evaluation_metrics.png", dpi=150)
 plt.close()
-print("  Saved plots/seed_evaluation_metrics.png")
+print("  Saved ../plots/seed_evaluation_metrics.png")
 
 print("\nAll done!")
-print("  plots/seeds_length_curves.png     — learning curves with confidence bands")
-print("  plots/seed_evaluation_metrics.png — all three metrics with error bars")
-print("  results/seed_evaluation_metrics.csv — full numbers table")
+print("  ../plots/seeds_length_curves.png     — learning curves with confidence bands")
+print("  ../plots/seed_evaluation_metrics.png — all three metrics with error bars")
+print("  ../results/seed_evaluation_metrics.csv — full numbers table")

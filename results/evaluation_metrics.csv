@@ -1,0 +1,10 @@
+env,method,sat_rate,mean_time,sample_eff
+Empty-8x8,Baseline,1.0,14.19,12905.0
+Empty-8x8,LTL,1.0,12.015,16089.0
+Empty-8x8,TLTL,1.0,13.01,19240.0
+LavaGap-S5,Baseline,1.0,15.0,2392.0
+LavaGap-S5,LTL,1.0,14.275,20748.0
+LavaGap-S5,TLTL,1.0,10.07,24532.0
+DoorKey-8x8,Baseline,0.02,411.5,
+DoorKey-8x8,LTL,0.09,404.0,
+DoorKey-8x8,TLTL,1.0,23.655,48259.0

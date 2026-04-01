@@ -61,9 +61,9 @@ for env_id in ENVS:
     )
 
     save_name = env_id.replace("/", "_").replace("-", "_").lower()
-    callback = MetricsCallback(f"results/{save_name}_baseline.csv")
+    callback = MetricsCallback(f"../results/{save_name}_baseline.csv")
     model.learn(total_timesteps=100_000, callback=callback)
-    model.save(f"ppo_{save_name}")
+    model.save(f"../ppo_{save_name}")
     print(f"Done! Saved ppo_{save_name}")
 
 print("\nAll environments complete!")

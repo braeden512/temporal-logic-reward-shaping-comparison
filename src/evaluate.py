@@ -10,7 +10,7 @@ from tltl_wrappers import TLTLEmptyWrapper, TLTLLavaGapWrapper, TLTLDoorKeyWrapp
 
 N_EVAL_EPISODES = 200
 SAMPLE_EFF_THRESHOLD = 0.8  # 80% satisfaction rate threshold
-os.makedirs("plots", exist_ok=True)
+os.makedirs("../plots", exist_ok=True)
 
 # ── model configs ─────────────────────────────────────────────────────────────
 CONFIGS = [
@@ -18,42 +18,42 @@ CONFIGS = [
         "env_id":   "MiniGrid-Empty-8x8-v0",
         "env_name": "Empty-8x8",
         "models": {
-            "Baseline": ("ppo_minigrid_empty_8x8_v0",    None),
-            "LTL":      ("ppo_empty_ltl",                LTLEmptyWrapper),
-            "TLTL":     ("ppo_empty_tltl",               TLTLEmptyWrapper),
+            "Baseline": ("../ppo_minigrid_empty_8x8_v0",    None),
+            "LTL":      ("../ppo_empty_ltl",                LTLEmptyWrapper),
+            "TLTL":     ("../ppo_empty_tltl",               TLTLEmptyWrapper),
         },
         "csv": {
-            "Baseline": "results/minigrid_empty_8x8_v0_baseline.csv",
-            "LTL":      "results/empty_ltl.csv",
-            "TLTL":     "results/empty_tltl.csv",
+            "Baseline": "../results/minigrid_empty_8x8_v0_baseline.csv",
+            "LTL":      "../results/empty_ltl.csv",
+            "TLTL":     "../results/empty_tltl.csv",
         }
     },
     {
         "env_id":   "MiniGrid-LavaGapS5-v0",
         "env_name": "LavaGap-S5",
         "models": {
-            "Baseline": ("ppo_minigrid_lavagaps5_v0",    None),
-            "LTL":      ("ppo_lava_ltl",                 LTLLavaGapWrapper),
-            "TLTL":     ("ppo_lava_tltl",                TLTLLavaGapWrapper),
+            "Baseline": ("../ppo_minigrid_lavagaps5_v0",    None),
+            "LTL":      ("../ppo_lava_ltl",                 LTLLavaGapWrapper),
+            "TLTL":     ("../ppo_lava_tltl",                TLTLLavaGapWrapper),
         },
         "csv": {
-            "Baseline": "results/minigrid_lavagaps5_v0_baseline.csv",
-            "LTL":      "results/lava_ltl.csv",
-            "TLTL":     "results/lava_tltl.csv",
+            "Baseline": "../results/minigrid_lavagaps5_v0_baseline.csv",
+            "LTL":      "../results/lava_ltl.csv",
+            "TLTL":     "../results/lava_tltl.csv",
         }
     },
     {
         "env_id":   "MiniGrid-DoorKey-8x8-v0",
         "env_name": "DoorKey-8x8",
         "models": {
-            "Baseline": ("ppo_minigrid_doorkey_8x8_v0",  None),
-            "LTL":      ("ppo_doorkey_ltl",              LTLDoorKeyWrapper),
-            "TLTL":     ("ppo_doorkey_tltl",             TLTLDoorKeyWrapper),
+            "Baseline": ("../ppo_minigrid_doorkey_8x8_v0",  None),
+            "LTL":      ("../ppo_doorkey_ltl",              LTLDoorKeyWrapper),
+            "TLTL":     ("../ppo_doorkey_tltl",             TLTLDoorKeyWrapper),
         },
         "csv": {
-            "Baseline": "results/minigrid_doorkey_8x8_v0_baseline.csv",
-            "LTL":      "results/doorkey_ltl.csv",
-            "TLTL":     "results/doorkey_tltl.csv",
+            "Baseline": "../results/minigrid_doorkey_8x8_v0_baseline.csv",
+            "LTL":      "../results/doorkey_ltl.csv",
+            "TLTL":     "../results/doorkey_tltl.csv",
         }
     },
 ]
@@ -162,8 +162,8 @@ for config in CONFIGS:
 
 # ── save results table ────────────────────────────────────────────────────────
 df_results = pd.DataFrame(results)
-df_results.to_csv("results/evaluation_metrics.csv", index=False)
-print("\n\nFull results saved to results/evaluation_metrics.csv")
+df_results.to_csv("../results/evaluation_metrics.csv", index=False)
+print("\n\nFull results saved to ../results/evaluation_metrics.csv")
 print(df_results.to_string(index=False))
 
 # ── Figure: three bar charts side by side ────────────────────────────────────
@@ -220,6 +220,6 @@ ax.annotate("100k = threshold\nnever reached",
             ha="right", va="top", fontsize=7, color="gray")
 
 plt.tight_layout()
-plt.savefig("plots/evaluation_metrics.png", dpi=150)
+plt.savefig("../plots/evaluation_metrics.png", dpi=150)
 plt.close()
-print("\nPlot saved to plots/evaluation_metrics.png")
+print("\nPlot saved to ../plots/evaluation_metrics.png")

@@ -7,19 +7,19 @@ import os
 # ── data sources ──────────────────────────────────────────────────────────────
 CONFIGS = {
     "Empty-8x8": {
-        "Baseline": "results/minigrid_empty_8x8_v0_baseline.csv",
-        "LTL":      "results/empty_ltl.csv",
-        "TLTL":     "results/empty_tltl.csv",
+        "Baseline": "../results/minigrid_empty_8x8_v0_baseline.csv",
+        "LTL":      "../results/empty_ltl.csv",
+        "TLTL":     "../results/empty_tltl.csv",
     },
     "LavaGap-S5": {
-        "Baseline": "results/minigrid_lavagaps5_v0_baseline.csv",
-        "LTL":      "results/lava_ltl.csv",
-        "TLTL":     "results/lava_tltl.csv",
+        "Baseline": "../results/minigrid_lavagaps5_v0_baseline.csv",
+        "LTL":      "../results/lava_ltl.csv",
+        "TLTL":     "../results/lava_tltl.csv",
     },
     "DoorKey-8x8": {
-        "Baseline": "results/minigrid_doorkey_8x8_v0_baseline.csv",
-        "LTL":      "results/doorkey_ltl.csv",
-        "TLTL":     "results/doorkey_tltl.csv",
+        "Baseline": "../results/minigrid_doorkey_8x8_v0_baseline.csv",
+        "LTL":      "../results/doorkey_ltl.csv",
+        "TLTL":     "../results/doorkey_tltl.csv",
     },
 }
 
@@ -27,7 +27,7 @@ COLORS  = {"Baseline": "#555555", "LTL": "#2196F3", "TLTL": "#FF5722"}
 STYLES  = {"Baseline": "--",      "LTL": "-",        "TLTL": "-"}
 SMOOTH  = 15   # rolling-average window
 
-os.makedirs("plots", exist_ok=True)
+os.makedirs("../plots", exist_ok=True)
 
 def smooth(series, w):
     return series.rolling(window=w, min_periods=1, center=True).mean()
@@ -53,9 +53,9 @@ for ax, (env_name, methods) in zip(axes, CONFIGS.items()):
     ax.grid(alpha=0.3)
 
 plt.tight_layout()
-plt.savefig("plots/reward_curves.png", dpi=150)
+plt.savefig("../plots/reward_curves.png", dpi=150)
 plt.close()
-print("Saved plots/reward_curves.png")
+print("Saved ../plots/reward_curves.png")
 
 # ── Figure 2: Episode Length (ep_len_mean) ────────────────────────────────────
 fig, axes = plt.subplots(1, 3, figsize=(15, 4), sharey=False)
@@ -78,9 +78,9 @@ for ax, (env_name, methods) in zip(axes, CONFIGS.items()):
     ax.grid(alpha=0.3)
 
 plt.tight_layout()
-plt.savefig("plots/length_curves.png", dpi=150)
+plt.savefig("../plots/length_curves.png", dpi=150)
 plt.close()
-print("Saved plots/length_curves.png")
+print("Saved ../plots/length_curves.png")
 
 # ── Figure 3: Final performance bar chart ─────────────────────────────────────
 envs    = list(CONFIGS.keys())
@@ -119,8 +119,8 @@ for ax, ylabel, title in zip(axes,
     ax.grid(axis="y", alpha=0.3)
 
 plt.tight_layout()
-plt.savefig("plots/final_comparison.png", dpi=150)
+plt.savefig("../plots/final_comparison.png", dpi=150)
 plt.close()
-print("Saved plots/final_comparison.png")
+print("Saved ../plots/final_comparison.png")
 
-print("\nAll plots saved to plots/")
+print("\nAll plots saved to ../plots/")
